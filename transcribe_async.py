@@ -39,16 +39,16 @@ def transcribe_file(speech_file):
 
     audio = types.RecognitionAudio(content=content)
     config = types.RecognitionConfig(
-        encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
-        sample_rate_hertz=16000,
-        language_code='en-US')
+        encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
+        sample_rate_hertz=8000,
+        language_code='fr-FR')
 
     # [START migration_async_response]
     operation = client.long_running_recognize(config, audio)
     # [END migration_async_request]
 
     print('Waiting for operation to complete...')
-    response = operation.result(timeout=90)
+    response = operation.result(timeout=260)
 
     # Print the first alternative of all the consecutive results.
     for result in response.results:
@@ -69,8 +69,8 @@ def transcribe_gcs(gcs_uri):
     audio = types.RecognitionAudio(uri=gcs_uri)
     config = types.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.FLAC,
-        sample_rate_hertz=16000,
-        language_code='en-US')
+        sample_rate_hertz=8000 ,
+        language_code='fr-FR')
 
     operation = client.long_running_recognize(config, audio)
 

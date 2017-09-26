@@ -1,7 +1,7 @@
 import argparse
 import os
 
-dirname = os.getcwd()
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'myproject1.json'
 
 def transcribe_gcs(gcs_uri):
     """Asynchronously transcribes the audio file specified by the gcs_uri."""
@@ -19,12 +19,14 @@ def transcribe_gcs(gcs_uri):
     operation = client.long_running_recognize(config, audio)
     print(operation)
     print('Waiting for operation to complete...')
-    response = operation.result(timeout=90)
+    response = operation.result(timeout=1000)
 
     # Print the first alternative of all the consecutive results.
     for result in response.results:
-        print('Transcript: {}'.format(result.alternatives[0].transcript))
-        print('Confidence: {}'.format(result.alternatives[0].confidence))
+        trans = unicode(result.alternatives[0],'utf-8')
+        conf = unicode(result.alternatives[0].confidence,'utf-8')
+        print('Transcript:{}'.format(trans))
+        print('Confidence: {}'.format(conf))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

@@ -23,7 +23,7 @@ def transcribe_gcs(gcs_uri):
 
     # Print the first alternative of all the consecutive results.
     for result in response.results:
-        trans = unicode(result.alternatives[0],'utf-8')
+        trans = unicode(result.alternatives[0].transcript,'utf-8')
         conf = unicode(result.alternatives[0].confidence,'utf-8')
         print('Transcript:{}'.format(trans))
         print('Confidence: {}'.format(conf))

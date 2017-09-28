@@ -16,13 +16,18 @@ Principe
 
 -	Streaming : On envoie les fichiers en continu, ils sont stockés temporairement dans une mémoire- tampon avant d’être traités et on récupère la réponse au fur et à mesure. (peut être possible d’utiliser ça mais je ne vois pas encore comment)
 
-Methode Utilisée:
+Méthode Utilisée:
 -----------------
-On’utilise un requête asynchrone en spécifiant l’adresse du fichier stocké sur le cloud (format URI), ça met à peu près 2-3 mn à renvoyer un résultat.
+On utilise un requête asynchrone en spécifiant l’adresse du fichier stocké sur le cloud (format URI), ça met à peu près 2-3 mn à renvoyer un résultat.
 Il faut au préalable:
 -Avoir stocké le fichier audio sur l'API Cloud Storage
 -Avoir converti les fichiers en format flac
--Avoir obtenu une clé d'authentification de la Google API
+-Avoir obtenu une clé d'authentification de la Google API (Platforme -> Créer un projet -> Comptes de service -> créer compte de service -> créer clé au format JSON -> entrer la clé à la place de "myproject1")
+
+Utilisation :
+
+python async_sr.py <uri du fichier sur le cloud> <fichier de sauvegarde du texte>
+
 Problèmes rencontrés:
 ---------------------
 
@@ -30,8 +35,11 @@ Problèmes rencontrés:
 
 -Problème d’encodage de la réponse.
 
--Le fait de devoir tout envoyer sur le cloud de google n'est pas applicable à notre base de donnée en temps raisonnable
+-Cette méthode implique de devoir envoyer chaque fichier sur le stockage cloud de google ce que n'est pas applicable à toute une base de données.
+
 
 Documentation
 -------------
 - Google Cloud Speech Recognition: https://cloud.google.com/speech/docs/
+- Comptes de service Google Cloud : https://cloud.google.com/compute/docs/access/service-accounts
+- Google Cloud Storage : https://cloud.google.com/storage/docs/?hl=fr

@@ -23,3 +23,7 @@ Problèmes rencontrés :
 
 Autoriser juste notre application à accéder au fichier stocké sur le Stockage Cloud, dans le cas contraire la solution serait de rendre public les fichiers audio
 Problème d’encodage de la réponse.
+
+Documentation
+-------------
+- Google Cloud Speech Recognition: https://cloud.google.com/speech/docs/

@@ -36,7 +36,7 @@ def main(speech_file):
             'config': {
                 'encoding': 'LINEAR16',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 8 khz
-                'languageCode': 'fr-FR',  # a BCP-47 language tag
+                'languageCode': 'fr',  # a BCP-47 language tag
             },
             'audio': {
                 'content': speech_content.decode('UTF-8')

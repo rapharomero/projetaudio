@@ -16,13 +16,21 @@ Principe
 
 -	Streaming : On envoie les fichiers en continu, ils sont stockés temporairement dans une mémoire- tampon avant d’être traités et on récupère la réponse au fur et à mesure. (peut être possible d’utiliser ça mais je ne vois pas encore comment)
 
-J’utilise un requête asynchrone en spécifiant l’adresse du fichier stocké sur le cloud (format URI), ça met à peu près 2-3 mn à renvoyer un résultat.
-
-Problèmes rencontrés :
+Methode Utilisée:
+-----------------
+On’utilise un requête asynchrone en spécifiant l’adresse du fichier stocké sur le cloud (format URI), ça met à peu près 2-3 mn à renvoyer un résultat.
+Il faut au préalable:
+-Avoir stocké le fichier audio sur l'API Cloud Storage
+-Avoir converti les fichiers en format flac
+-Avoir obtenu une clé d'authentification de la Google API
+Problèmes rencontrés:
 ---------------------
 
-Autoriser juste notre application à accéder au fichier stocké sur le Stockage Cloud, dans le cas contraire la solution serait de rendre public les fichiers audio
-Problème d’encodage de la réponse.
+-Autoriser juste notre application à accéder au fichier stocké sur le Stockage Cloud, dans le cas contraire la solution serait de rendre public les fichiers audio
+
+-Problème d’encodage de la réponse.
+
+-Le fait de devoir tout envoyer sur le cloud de google n'est pas applicable à notre base de donnée en temps raisonnable
 
 Documentation
 -------------

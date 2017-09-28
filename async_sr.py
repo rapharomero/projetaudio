@@ -24,12 +24,17 @@ def transcribe_gcs(gcs_uri,file_name):
     response = operation.result(timeout=1000)
 
     # Print the first alternative of all the consecutive results.
-    for result in response.results:
-        transc = result.alternatives[0].transcript.decode('utf-8'))
+    for i , result in enumerate(response.results):
+        transc = result.alternatives[0].transcript.decode('utf-8')
         conf = result.alternatives[0].confidence
+    #Write the transcript into the text file
+        with open('text_files/'+ file_name,'a') as outfile:
+            outfile.write(' ' + str(i) + ' : ' + ' ')
+            outfile.write(transc)
+            outfile.close()
     #     with open('result.txt', 'w') as outfile:
         #     json.dump(result.alternatives[0],outfile,ensure_ascii = False)
-        print('Transcript:{}'.format(transc)
+        print('Transcript:{}'.format(transc))
         print('Confidence: {}'.format(conf))
 
 if __name__ == '__main__':
